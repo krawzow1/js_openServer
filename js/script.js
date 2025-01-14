@@ -246,9 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const statusMessage = document.createElement('img')
             statusMessage.src = message.loading
             statusMessage.style.cssText = `
-                displya: block;
+                display: block; // исправлено
                 margin: 0 auto;
-                position: center;
             `
             // form.append(statusMessage)
             form.insertAdjacentElement('afterend', statusMessage)
@@ -303,6 +302,10 @@ document.addEventListener('DOMContentLoaded', () => {
             thanksModal.remove()
             prevModalDialog.style.display = 'block'
             closeModal()
-        }, 4000)
+        }, 2000)
     }
+
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => console.log(json))
 })
