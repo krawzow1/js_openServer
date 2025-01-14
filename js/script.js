@@ -305,7 +305,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000)
     }
 
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name: 'Ilya'})
+    })
       .then(response => response.json())
       .then(json => console.log(json))
 })
