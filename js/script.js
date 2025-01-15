@@ -235,11 +235,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     forms.forEach(item => {
-        postData(item)
+        bindpostData(item)
     })
 
+    const postData = async (url, data) => {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'},
+            body: data 
+        })
 
-    function postData(form) {
+        return await res.json()
+    }
+
+    function bindpostData(form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault()
 
@@ -256,20 +266,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(form)
             
             //преобр данные в объект
-            const object = {}
-            formData.forEach(function(value,key){
-                object[key] = value
-            })
+            // const object = {}
+            // formData.forEach(function(value,key){
+            //     object[key] = value
+            // })
 
-            //переводим объект в JSON формат
+            const json = JSON.stringify(Object.fromEntries(formData.entries()))
 
-            fetch('server.php', {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json'},
-                body: JSON.stringify(object) 
-            })
-            .then(data => data.text())
+            // //переводим объект в JSON формат
+
+            // fetch('server.php', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-type': 'application/json'},
+            //     body: JSON.stringify(object) 
+            // })
+            postData('http://localhost:3000/requests', json)
             .then(data => {
                 console.log(data)
                 showThanksModal(message.success)
@@ -316,5 +328,4 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal()
         }, 2000)
     }
-
 })
