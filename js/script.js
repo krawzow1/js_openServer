@@ -556,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
 
-    // // Работа с localStorage
+    // Работа с localStorage
     // localStorage.setItem('count', 1)
     // console.log(localStorage.getItem('count'))
 
