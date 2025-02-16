@@ -56,4 +56,4 @@ function timer() {
     // console.log(getTimeRemaining(deadline))
 }
 
-module.exports = timer
+export default timer
