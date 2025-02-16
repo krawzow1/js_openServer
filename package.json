@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/krawzow1/js_openServer#readme",
   "devDependencies": {
-    "json-server": "^0.17.4"
+    "json-server": "^0.17.4",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
   }
 }
